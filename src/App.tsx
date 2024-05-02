@@ -241,12 +241,12 @@ function App() {
 				"粗石": 4,
 				"溶けた鉄の欠片": 3,
 			},
-			"宝石研磨材":{
-				"純粋な粉の試薬":1,
-				"自然の痕跡":2,
-				"加工石炭":4,
-				"精製水":6,
-				},
+			"宝石研磨材": {
+				"純粋な粉の試薬": 1,
+				"自然の痕跡": 2,
+				"加工石炭": 4,
+				"精製水": 6,
+			},
 		}
 	}
 
@@ -302,72 +302,69 @@ function App() {
 		},
 		
 		*/}
-			<div className='py-4 flex gap-3 sticky top-0 bg-gray-900 border-gray-500 border-b px-5 '>
-				<Button color="blue" onClick={() => setCreateCount(100)}>100</Button>
-				<Button color="blue" onClick={() => setCreateCount(250)}>250</Button>
-				<Button color="blue" onClick={() => setCreateCount(500)}>500</Button>
-				<Button color="blue" onClick={() => setCreateCount(1000)}>1000</Button>
-				<Button color="blue" onClick={() => setCreateCount(2000)}>2000</Button>
-
+			<div className='py-4 flex gap-3 sticky top-0 bg-gray-900 border-gray-500 border-b px-5 items-center'>
+				<p className='text-white'>作る数</p>
+				<Button color={createCount == 100 ? "blue" : "gray"} onClick={() => setCreateCount(100)}>100</Button>
+				<Button color={createCount == 250 ? "blue" : "gray"} onClick={() => setCreateCount(250)}>250</Button>
+				<Button color={createCount == 500 ? "blue" : "gray"} onClick={() => setCreateCount(500)}>500</Button>
+				<Button color={createCount == 1000 ? "blue" : "gray"} onClick={() => setCreateCount(1000)}>1000</Button>
 			</div>
 			<div className='p-5'>
-				<Accordion>
-					{<Accordion className='[&_img]:max-w-[25px]'>
-						{Object.keys(setting).map((category: string) => (
-							<Accordion.Panel>
-								<Accordion.Title >{category}</Accordion.Title>
-								<Accordion.Content>
-									<Accordion className='[&_img]:max-w-[25px]'>
-										{Object.keys(setting[category]).map((key: string) => (
-											<Accordion.Panel>
-												<Accordion.Title >
-													<div className='flex flex-row items-center gap-2'>
-														<img src={images[key]} />
-														{key}
-													</div>
+				{<Accordion collapseAll className='[&_img]:max-w-[25px]'>
+					{Object.keys(setting).map((category: string) => (
+						<Accordion.Panel>
+							<Accordion.Title >{category}</Accordion.Title>
+							<Accordion.Content>
+								<Accordion collapseAll className='[&_img]:max-w-[25px]'>
+									{Object.keys(setting[category]).map((key: string) => (
+										<Accordion.Panel>
+											<Accordion.Title >
+												<div className='flex flex-row items-center gap-2'>
+													<img src={images[key]} />
+													{key}
+												</div>
 
-												</Accordion.Title>
-												<Accordion.Content>
-													<Table>
-														<Table.Body>
-															{Object.keys(setting[category][key]).map((item) => (
-																<Table.Row className='text-lg'>
-																	<Table.Cell>
-																		<div className='flex flex-row items-center gap-2'>
-																			<img src={images[item]} />
-																			<TextInput onClick={(e: any) => { e.target.select() }} type='text' readOnly value={item} />
-																			<Button
-																				color="gray"
-																				className='[&_span]:!px-2'
-																				onClick={() => {
-																					window.open(`https://www.google.com/search?q=${encodeURI(`黒い砂漠 ${item}`)}`)
-																				}}>
-																				<FcSearch size={18} />
-																			</Button>
-																			&nbsp;
-																			(&nbsp;{setting[category][key][item]}&nbsp;)
-																		</div>
-																	</Table.Cell>
-																	<Table.Cell>{(setting[category][key][item] * createCount).toLocaleString()}</Table.Cell>
-																</Table.Row>
-															))}
-														</Table.Body>
-													</Table>
+											</Accordion.Title>
+											<Accordion.Content>
+												<Table>
+													<Table.Body>
+														{Object.keys(setting[category][key]).map((item) => (
+															<Table.Row className='text-lg'>
+																<Table.Cell>
+																	<div className='flex flex-row items-center gap-2'>
+																		<img src={images[item]} />
+																		<TextInput onClick={(e: any) => { e.target.select() }} type='text' readOnly value={item} />
+																		<Button
+																			color="gray"
+																			className='[&_span]:!px-2'
+																			onClick={() => {
+																				window.open(`https://www.google.com/search?q=${encodeURI(`黒い砂漠 ${item}`)}`)
+																			}}>
+																			<FcSearch size={18} />
+																		</Button>
+																		&nbsp;
+																		(&nbsp;{setting[category][key][item]}&nbsp;)
+																	</div>
+																</Table.Cell>
+																<Table.Cell>{(setting[category][key][item] * createCount).toLocaleString()}</Table.Cell>
+															</Table.Row>
+														))}
+													</Table.Body>
+												</Table>
 
-												</Accordion.Content>
-											</Accordion.Panel>
-										))}
-
-
-									</Accordion>
-
-								</Accordion.Content>
-							</Accordion.Panel>
-						))}
+											</Accordion.Content>
+										</Accordion.Panel>
+									))}
 
 
-					</Accordion>}
-				</Accordion>
+								</Accordion>
+
+							</Accordion.Content>
+						</Accordion.Panel>
+					))}
+
+
+				</Accordion>}
 			</div>
 			<div className='h-[200px																									]'></div>
 		</div>
