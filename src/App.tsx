@@ -1,7 +1,7 @@
 import { useState } from 'react'
 import { Accordion, Button, Table, TextInput } from 'flowbite-react'
 
-import { FcSearch } from "react-icons/fc";
+// import { FcSearch } from "react-icons/fc";
 function App() {
 	// const [count, setCount] = useState<number>(0)
 
@@ -77,6 +77,9 @@ function App() {
 		"": "",
 		"": "",
 		"": "",
+		"タイガーキノコ": "https://ossan-gamer.net/files/bdoicon/%E3%82%BF%E3%82%A4%E3%82%AC%E3%83%BC%E3%82%AD%E3%83%8E%E3%82%B3.png}",
+		"歳月の粉末": "https://ossan-gamer.net/files/bdoicon/%E6%AD%B3%E6%9C%88%E3%81%AE%E7%B2%89%E6%9C%AB.png}",
+		"衝撃のエリクサー": "https://ossan-gamer.net/files/bdoicon/%E8%A1%9D%E6%92%83%E3%81%AE%E3%82%A8%E3%83%AA%E3%82%AF%E3%82%B5%E3%83%BC.png",
 		"神獣の血": "https://ossan-gamer.net/files/bdoicon/%E7%A5%9E%E7%8D%A3%E3%81%AE%E8%A1%80.png}",
 		"闇の粉末": "https://ossan-gamer.net/files/bdoicon/%E9%97%87%E3%81%AE%E7%B2%89%E6%9C%AB.png}",
 		"迅速のエリクサー": "https://ossan-gamer.net/files/bdoicon/%E8%BF%85%E9%80%9F%E3%81%AE%E3%82%A8%E3%83%AA%E3%82%AF%E3%82%B5%E3%83%BC.png",
@@ -89,10 +92,12 @@ function App() {
 		"大地の痕跡": "https://ossan-gamer.net/files/bdoicon/%E5%A4%A7%E5%9C%B0%E3%81%AE%E7%97%95%E8%B7%A1.png}",
 		"リザードの血・ワームの血・コウモリの血・クークー鳥の血・コブラの血": "https://ossan-gamer.net/files/bdoicon/%E3%83%AA%E3%82%B6%E3%83%BC%E3%83%89%E3%81%AE%E8%A1%80%E3%83%BB%E3%83%AF%E3%83%BC%E3%83%A0%E3%81%AE%E8%A1%80%E3%83%BB%E3%82%B3%E3%82%A6%E3%83%A2%E3%83%AA%E3%81%AE%E8%A1%80%E3%83%BB%E3%82%AF%E3%83%BC%E3%82%AF%E3%83%BC%E9%B3%A5%E3%81%AE%E8%A1%80%E3%83%BB%E3%82%B3%E3%83%96%E3%83%A9%E3%81%AE%E8%A1%80.png}",
 		"労働者のエリクサー": "https://ossan-gamer.net/files/bdoicon/%E5%8A%B4%E5%83%8D%E8%80%85%E3%81%AE%E3%82%A8%E3%83%AA%E3%82%AF%E3%82%B5%E3%83%BC.png",
-		"歳月の粉末": "https://ossan-gamer.net/files/bdoicon/%E6%AD%B3%E6%9C%88%E3%81%AE%E7%B2%89%E6%9C%AB.png}",
 		"カエデ樹液": "https://ossan-gamer.net/files/bdoicon/%E3%82%AB%E3%82%A8%E3%83%87%E6%A8%B9%E6%B6%B2.png}",
 		"火炎鱗の花": "https://ossan-gamer.net/files/bdoicon/%E7%81%AB%E7%82%8E%E9%B1%97%E3%81%AE%E8%8A%B1.png}",
 		"歳月のエリクサー": "https://ossan-gamer.net/files/bdoicon/%E6%AD%B3%E6%9C%88%E3%81%AE%E3%82%A8%E3%83%AA%E3%82%AF%E3%82%B5%E3%83%BC.png",
+		"ドワーフキノコ": "https://ossan-gamer.net/files/bdoicon/%E3%83%89%E3%83%AF%E3%83%BC%E3%83%95%E3%82%AD%E3%83%8E%E3%82%B3.png}",
+		"クマの血・トロルの血・オーガの血・ライオンの血": "https://ossan-gamer.net/files/bdoicon/%E3%82%AF%E3%83%9E%E3%81%AE%E8%A1%80%E3%83%BB%E3%83%88%E3%83%AD%E3%83%AB%E3%81%AE%E8%A1%80%E3%83%BB%E3%82%AA%E3%83%BC%E3%82%AC%E3%81%AE%E8%A1%80%E3%83%BB%E3%83%A9%E3%82%A4%E3%82%AA%E3%83%B3%E3%81%AE%E8%A1%80.png}",
+		"怒りのエリクサー": "https://ossan-gamer.net/files/bdoicon/%E6%80%92%E3%82%8A%E3%81%AE%E3%82%A8%E3%83%AA%E3%82%AF%E3%82%B5%E3%83%BC.png",
 	}
 
 	const setting: any = {
@@ -100,7 +105,7 @@ function App() {
 			"グリフォンのエリクサー": {
 				"グリフォンの爪": 1,
 				"精製水": 3,
-				"戦闘の痕跡": 3,
+				"自然の痕跡": 3,
 				"スギ樹液": 6,
 				"罪人の血": 2,
 			},
@@ -118,7 +123,7 @@ function App() {
 			},
 			"破壊のエリクサー": {
 				"暴風の油": 1,
-				"狩猟の痕跡": 3,
+				"自然の痕跡": 3,
 				"澄んだ液体試薬": 5,
 				"炎の粉末": 5,
 				"雪原スギの樹液": 7
@@ -127,7 +132,7 @@ function App() {
 				"再生の油": 1,
 				"澄んだ液体試薬": 5,
 				"ゴーストキノコ": 2,
-				"戦闘の痕跡": 3,
+				"自然の痕跡": 3,
 				"スギ樹液": 5,
 			},
 
@@ -147,7 +152,7 @@ function App() {
 			},
 			"暗殺者のエリクサー": {
 				"再生の油": 1,
-				"記憶の痕跡": 2,
+				"自然の痕跡": 2,
 				"ヒュージキノコ": 4,
 				"赤い木のこぶ": 2,
 				"純粋な粉の試薬": 5,
@@ -170,6 +175,18 @@ function App() {
 				"精製水": 3,
 				"トネリコ樹液": 6,
 				"豚の血・羊の血・牛の血・鹿の血・ワラゴンの血": 5,
+			},
+			"衝撃のエリクサー": {
+				"愚者の血": 1,
+				"タイガーキノコ": 5,
+				"歳月の粉末": 3,
+				"スギ樹液": 7,
+			},
+			"怒りのエリクサー": {
+				"ドワーフキノコ": 4,
+				"精製水": 3,
+				"トネリコ樹液": 1,
+				"クマの血・トロルの血・オーガの血・ライオンの血": 4,
 			},
 			"螺旋のエリクサー": {
 				"コノテガシワ樹液": 6,
@@ -217,7 +234,7 @@ function App() {
 		"油": {
 			"平穏の油": {
 				"賢者の血": 1,
-				"魔力の実": 1,
+				"自然の実": 1,
 				"血色の木の節": 1,
 				"大地の粉末": 1,
 			},
@@ -302,14 +319,14 @@ function App() {
 		},
 		
 		*/}
-			<div className='py-4 flex gap-3 sticky top-0 bg-gray-900 border-gray-500 border-b px-5 items-center'>
+			<div className='py-4 flex gap-3 sticky top-0 bg-gray-900 border-gray-500 border-b px-5 items-center z-50'>
 				<p className='text-white'>作る数</p>
 				<Button color={createCount == 100 ? "blue" : "gray"} onClick={() => setCreateCount(100)}>100</Button>
 				<Button color={createCount == 250 ? "blue" : "gray"} onClick={() => setCreateCount(250)}>250</Button>
 				<Button color={createCount == 500 ? "blue" : "gray"} onClick={() => setCreateCount(500)}>500</Button>
 				<Button color={createCount == 1000 ? "blue" : "gray"} onClick={() => setCreateCount(1000)}>1000</Button>
 			</div>
-			<div className='p-5'>
+			<div className=''>
 				{<Accordion collapseAll className='[&_img]:max-w-[25px]'>
 					{Object.keys(setting).map((category: string) => (
 						<Accordion.Panel>
@@ -320,19 +337,20 @@ function App() {
 										<Accordion.Panel>
 											<Accordion.Title >
 												<div className='flex flex-row items-center gap-2'>
-													<img src={images[key]} />
+												<img src={`./${key}.png`}/>
 													{key}
 												</div>
 
 											</Accordion.Title>
-											<Accordion.Content>
+											<Accordion.Content className='!px-0'>
 												<Table>
 													<Table.Body>
 														{Object.keys(setting[category][key]).map((item) => (
 															<Table.Row className='text-lg'>
 																<Table.Cell>
 																	<div className='flex flex-row items-center gap-2'>
-																		<img src={images[item]} />
+																		{/* <img src={images[item]} /> */}
+																		<img src={`./${item}.png`}/>
 																		<TextInput onClick={(e: any) => { e.target.select() }} type='text' readOnly value={item} />
 																		<Button
 																			color="gray"
@@ -340,13 +358,13 @@ function App() {
 																			onClick={() => {
 																				window.open(`https://www.google.com/search?q=${encodeURI(`黒い砂漠 ${item}`)}`)
 																			}}>
-																			<FcSearch size={18} />
+																			{/* <FcSearch size={18} /> */}
 																		</Button>
-																		&nbsp;
-																		(&nbsp;{setting[category][key][item]}&nbsp;)
+																		{/* &nbsp;
+																		(&nbsp;{setting[category][key][item]}&nbsp;) */}
 																	</div>
 																</Table.Cell>
-																<Table.Cell>{(setting[category][key][item] * createCount).toLocaleString()}</Table.Cell>
+																<Table.Cell>{(setting[category][key][item] * createCount).toLocaleString()} (&nbsp;{setting[category][key][item]}&nbsp;)</Table.Cell>
 															</Table.Row>
 														))}
 													</Table.Body>
