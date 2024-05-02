@@ -3,7 +3,7 @@ import { Accordion, Button, Table, TextInput } from 'flowbite-react'
 
 import { FcSearch } from "react-icons/fc";
 function App() {
-	const [count, setCount] = useState(0)
+	// const [count, setCount] = useState<number>(0)
 
 	const [createCount, setCreateCount] = useState<number>(100);
 
