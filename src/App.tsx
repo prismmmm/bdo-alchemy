@@ -146,6 +146,30 @@ function App() {
 				"自然の痕跡": 1,
 				"リザードの血・ワームの血・コウモリの血・クークー鳥の血・コブラの血": 2,
 			},
+			"罪人の血": {
+				"澄んだ液体試薬": 1,
+				"血色の木の節": 1,
+				"炎の粉末": 1,
+				"豚の血・羊の血・牛の血・鹿の血・ワラゴンの血": 2,
+			},
+			"愚者の血": {
+				"澄んだ液体試薬": 1,
+				"精霊の葉": 1,
+				"闇の粉末": 1,
+				"オオカミの血・フラミンゴの血・チータードラゴンの血・サイの血": 2,
+			},
+			"暴君の血": {
+				"純粋な粉の試薬": 1,
+				"修道士の枝": 1,
+				"自然の痕跡": 1,
+				"クマの血・トロルの血・オーガの血": 2,
+			},
+			"賢者の血": {
+				"澄んだ液体試薬": 1,
+				"修道士の枝": 1,
+				"自然の痕跡": 1,
+				"キツネの血・イタチの血・タヌキの血・サソリの血": 2,
+			},
 		},
 		"油": {
 			"平穏の油": {
@@ -156,9 +180,21 @@ function App() {
 			},
 			"再生の油": {
 				"神獣の血": 1,
-				"紅炎の実": 1,
+				"自然の実": 1,
 				"赤い木のこぶ": 1,
 				"クラックの粉末": 1,
+			},
+			"不屈の油": {
+				"愚者の血": 1,
+				"自然の実": 1,
+				"修道士の枝": 1,
+				"炎の粉末": 1,
+			},
+			"暴風の油": {
+				"暴君の血": 1,
+				"自然の実": 1,
+				"枯れ木の皮": 1,
+				"歳月の粉末": 1,
 			},
 		},
 		"中間素材": {
@@ -186,6 +222,29 @@ function App() {
 				"加工石炭": 4,
 				"精製水": 6,
 			},
+		},
+		"光明石": {
+			"浄化された火の光明石.1": {
+				"不完全な火の光明石": 1,
+				"黒い結晶の破片": 10,
+				"ブラックストーン": 10,
+				"炎の粉末": 50,
+				"澄んだ液体試薬": 50,
+			},
+			"浄化された火の光明石.2": {
+				"不完全な火の光明石": 1,
+				"魔力の光明石の結晶": 10,
+				"ブラックストーン": 10,
+				"炎の粉末": 50,
+				"澄んだ液体試薬": 50,
+			},
+			"浄化された風の光明石": {
+				"不完全な風の光明石": 1,
+				"黒い結晶の破片・魔力の光明石の結晶": 10,
+				"ブラックストーン": 10,
+				"クラックの粉末": 50,
+				"澄んだ液体試薬": 50,
+			},
 		}
 	}
 
@@ -194,7 +253,7 @@ function App() {
 	return (
 		<div className=''>
 			{/* 
-
+d
 		const title = document.querySelector("#contentInner > main > article > div > section > h1").innerText;
 		const title_link = document.querySelector("#contentInner > main > article > div > section > p:nth-child(5) > img").src;
 
@@ -241,12 +300,16 @@ function App() {
 		},
 		
 		*/}
-			<div className='py-4 flex gap-3 sticky top-0 bg-gray-900 border-gray-500 border-b px-5 items-center z-50'>
-				<p className='text-white'>作る数</p>
+			<div className='py-4 flex gap-3 sticky top-0 bg-gray-900 border-gray-500 border-b px-5 items-center z-50 flex-wrap'>
+				<p className='text-white whitespace-nowrap'>作る数 </p>
+				{/* <Button color={createCount == 10 ? "blue" : "gray"} onClick={() => setCreateCount(10)}>10</Button> */}
 				<Button color={createCount == 100 ? "blue" : "gray"} onClick={() => setCreateCount(100)}>100</Button>
 				<Button color={createCount == 250 ? "blue" : "gray"} onClick={() => setCreateCount(250)}>250</Button>
 				<Button color={createCount == 500 ? "blue" : "gray"} onClick={() => setCreateCount(500)}>500</Button>
 				<Button color={createCount == 1000 ? "blue" : "gray"} onClick={() => setCreateCount(1000)}>1000</Button>
+				<TextInput addon="Custom" className='w-[140px] [&_input]:text-right'
+					value={createCount} onChange={(e) => setCreateCount(Number(e.target.value))}
+					onClick={(e:any) => e.target.select()} />
 			</div>
 			<div className=''>
 				{<Accordion collapseAll className='[&_img]:max-w-[25px]'>
@@ -259,21 +322,31 @@ function App() {
 										<Accordion.Panel>
 											<Accordion.Title >
 												<div className='flex flex-row items-center gap-2'>
-													<img src={`./${key}.png`} />
-													{key}
+													<img src={`./${key.split('.')[0]}.png`} />
+													{key.split('.')[0]}
 												</div>
 
 											</Accordion.Title>
 											<Accordion.Content className='!px-0'>
 												<Table>
 													<Table.Body>
+														<Table.Row>
+															<Table.Cell colSpan={2}>
+																<TextInput onClick={(e: any) => { e.target.select() }} type='text' readOnly value={key} />
+															</Table.Cell>
+														</Table.Row>
 														{Object.keys(setting[category][key]).map((item) => (
 															<Table.Row className='text-lg'>
 																<Table.Cell>
 																	<div className='flex flex-row items-center gap-2'>
 																		{/* <img src={images[item]} /> */}
 																		<img src={`./${item}.png`} />
-																		<TextInput onClick={(e: any) => { e.target.select() }} type='text' readOnly value={item} />
+																		<div className='flex gap-2 flex-col'>
+																			{item.split('・').map((v) => (
+																				<TextInput onClick={(e: any) => { e.target.select() }} type='text' readOnly value={v} />
+																			))}
+																		</div>
+
 																		{/* <Button
 																			color="gray"
 																			className='[&_span]:!px-2'
@@ -286,7 +359,10 @@ function App() {
 																		(&nbsp;{setting[category][key][item]}&nbsp;) */}
 																	</div>
 																</Table.Cell>
-																<Table.Cell>{(setting[category][key][item] * createCount).toLocaleString()} (&nbsp;{setting[category][key][item]}&nbsp;)</Table.Cell>
+																<Table.Cell>
+																	<p className='text-white font-bold text-xl'>{(setting[category][key][item] * createCount).toLocaleString()} </p>
+																	(&nbsp;{setting[category][key][item]}&nbsp;)
+																</Table.Cell>
 															</Table.Row>
 														))}
 													</Table.Body>
