@@ -1,5 +1,5 @@
 import { useState } from 'react'
-import { Accordion, Button, Table, TextInput } from 'flowbite-react'
+import { Accordion, Badge, Button, Table, TextInput } from 'flowbite-react'
 import "./App.css"
 // import { FcSearch } from "react-icons/fc";
 function App() {
@@ -306,7 +306,7 @@ d
 					<Button color={createCount == 250 ? "blue" : "gray"} onClick={() => setCreateCount(250)}>250</Button>
 					<Button color={createCount == 500 ? "blue" : "gray"} onClick={() => setCreateCount(500)}>500</Button>
 					<Button color={createCount == 1000 ? "blue" : "gray"} onClick={() => setCreateCount(1000)}>1000</Button>
-					<TextInput 
+					<TextInput
 						type='number'
 						addon="Custom" className='w-[200px] [&_input]:text-right'
 						value={createCount} onChange={(e) => setCreateCount(Number(e.target.value))}
@@ -330,8 +330,8 @@ d
 							<Accordion.Content>
 								<Accordion collapseAll className='[&_img]:max-w-[25px]'>
 									{Object.keys(setting[category]).map((key: string) => (
-										<Accordion.Panel>
-											<Accordion.Title >
+										<Accordion.Panel >
+											<Accordion.Title className='!p-3' >
 												<div className='flex flex-row items-center gap-2'>
 													<img src={`./${key.split('.')[0]}.png`} />
 													{key.split('.')[0]}
@@ -343,7 +343,7 @@ d
 													<Table.Body>
 														<Table.Row>
 															<Table.Cell colSpan={2}>
-																<TextInput onClick={(e: any) => { e.target.select() }} type='text' readOnly value={key} />
+																<TextInput sizing="sm" onClick={(e: any) => { e.target.select() }} type='text' readOnly value={key} />
 															</Table.Cell>
 														</Table.Row>
 														{Object.keys(setting[category][key]).map((item) => (
@@ -354,7 +354,7 @@ d
 																		<img src={`./${item}.png`} />
 																		<div className='flex gap-2 flex-col'>
 																			{item.split('・').map((v) => (
-																				<TextInput onClick={(e: any) => { e.target.select() }} type='text' readOnly value={v} />
+																				<TextInput sizing="sm" onClick={(e: any) => { e.target.select() }} type='text' readOnly value={v} />
 																			))}
 																		</div>
 
@@ -371,8 +371,13 @@ d
 																	</div>
 																</Table.Cell>
 																<Table.Cell>
-																	<p className='text-white font-bold text-xl'>{(setting[category][key][item] * createCount).toLocaleString()} </p>
-																	(&nbsp;{setting[category][key][item]}&nbsp;)
+																	<div className='flex gap-1'>
+																		<p className='text-white font-bold'>{(setting[category][key][item] * createCount).toLocaleString()} </p>
+																		{/* (&nbsp;{setting[category][key][item]}&nbsp;) */}
+																		<Badge color="gray">
+																			{setting[category][key][item]}
+																		</Badge>
+																	</div>
 																</Table.Cell>
 															</Table.Row>
 														))}
