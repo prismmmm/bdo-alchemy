@@ -1,13 +1,13 @@
 import { useState } from 'react'
 import { Accordion, Button, Table, TextInput } from 'flowbite-react'
-
+import "./App.css"
 // import { FcSearch } from "react-icons/fc";
 function App() {
 	// const [count, setCount] = useState<number>(0)
 
 	const [createCount, setCreateCount] = useState<number>(100);
 
-
+	const [reRenderKey, setReRenderKey] = useState<Date>(new Date());
 	const setting: any = {
 		"エリクサー": {
 			"グリフォンのエリクサー": {
@@ -248,10 +248,8 @@ function App() {
 		}
 	}
 
-
-
 	return (
-		<div className=''>
+		<div className='xl:max-w-[1000px] m-auto px-2'>
 			{/* 
 d
 		const title = document.querySelector("#contentInner > main > article > div > section > h1").innerText;
@@ -300,22 +298,35 @@ d
 		},
 		
 		*/}
-			<div className='py-4 flex gap-3 sticky top-0 bg-gray-900 border-gray-500 border-b px-5 items-center z-50 flex-wrap'>
-				<p className='text-white whitespace-nowrap'>作る数 </p>
-				{/* <Button color={createCount == 10 ? "blue" : "gray"} onClick={() => setCreateCount(10)}>10</Button> */}
-				<Button color={createCount == 100 ? "blue" : "gray"} onClick={() => setCreateCount(100)}>100</Button>
-				<Button color={createCount == 250 ? "blue" : "gray"} onClick={() => setCreateCount(250)}>250</Button>
-				<Button color={createCount == 500 ? "blue" : "gray"} onClick={() => setCreateCount(500)}>500</Button>
-				<Button color={createCount == 1000 ? "blue" : "gray"} onClick={() => setCreateCount(1000)}>1000</Button>
-				<TextInput addon="Custom" className='w-[140px] [&_input]:text-right'
-					value={createCount} onChange={(e) => setCreateCount(Number(e.target.value))}
-					onClick={(e:any) => e.target.select()} />
+			<div className='py-4 flex gap-3 sticky top-0 bg-gray-900 border-gray-700 border-b items-center justify-between z-50 mb-3'>
+				<div className='flex gap-3 items-center flex-wrap'>
+					<p className='text-white whitespace-nowrap '>作る数 </p>
+					{/* <Button color={createCount == 10 ? "blue" : "gray"} onClick={() => setCreateCount(10)}>10</Button> */}
+					<Button color={createCount == 100 ? "blue" : "gray"} onClick={() => setCreateCount(100)}>100</Button>
+					<Button color={createCount == 250 ? "blue" : "gray"} onClick={() => setCreateCount(250)}>250</Button>
+					<Button color={createCount == 500 ? "blue" : "gray"} onClick={() => setCreateCount(500)}>500</Button>
+					<Button color={createCount == 1000 ? "blue" : "gray"} onClick={() => setCreateCount(1000)}>1000</Button>
+					<TextInput 
+						type='number'
+						addon="Custom" className='w-[200px] [&_input]:text-right'
+						value={createCount} onChange={(e) => setCreateCount(Number(e.target.value))}
+						onClick={(e: any) => e.target.select()} />
+				</div>
+
+				<div>
+					<Button color="blue" className='whitespace-nowrap' onClick={() => setReRenderKey(new Date())}>Close All</Button>
+				</div>
 			</div>
-			<div className=''>
+			<div className='' key={reRenderKey.toString()}>
 				{<Accordion collapseAll className='[&_img]:max-w-[25px]'>
 					{Object.keys(setting).map((category: string) => (
 						<Accordion.Panel>
-							<Accordion.Title >{category}</Accordion.Title>
+							<Accordion.Title >
+								<div className='flex gap-2'>
+									<img src={`./${category}.png`} />
+									<p className='font-bold'>	{category}</p>
+								</div>
+							</Accordion.Title>
 							<Accordion.Content>
 								<Accordion collapseAll className='[&_img]:max-w-[25px]'>
 									{Object.keys(setting[category]).map((key: string) => (
