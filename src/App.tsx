@@ -245,6 +245,43 @@ function App() {
 				"クラックの粉末": 50,
 				"澄んだ液体試薬": 50,
 			},
+		},
+		"夢見る香炉": {
+			"夢見る香炉の材料.A": {
+				"終末の月香炉の型": 1,
+				"純プラチナの結晶": 100,
+				"純銅の結晶": 100,
+				"純錫の結晶": 100,
+				"月明かりオパール": 100,
+			},
+			"夢見る香炉の材料.B": {
+				"終末の月香炉の型": 1,
+				"星々の旋律": 25,
+				"純銅の結晶": 100,
+				"純錫の結晶": 100,
+				"魔力の光明石の結晶": 300,
+			},
+			"夢見る香炉の材料.C": {
+				"終末の月香炉の型": 1,
+				"終末の月の錬金触媒剤": 400,
+				"銅の塊": 1000,
+				"錫の塊": 1000,
+				"魔力の光明石の結晶": 300,
+			},
+			"夢想の粉":{
+				"ブラックストーン粉末":10,
+				"自然の実":10,
+				"千年草":10,
+				"忘念の花":10,
+				"ゼンマイの根":10,
+			},
+			"夢見る香炉":{
+				"終末の月香炉":1,
+				"夢想の粉":10,
+				"夢想の羽毛":10,
+				"炎の粉末":10,
+				"火角":10,
+			}
 		}
 	}
 
@@ -302,6 +339,8 @@ d
 				<div className='flex gap-3 items-center flex-wrap'>
 					<p className='text-white whitespace-nowrap '>作る数 </p>
 					{/* <Button color={createCount == 10 ? "blue" : "gray"} onClick={() => setCreateCount(10)}>10</Button> */}
+					<Button color={createCount == 1 ? "blue" : "gray"} onClick={() => setCreateCount(1)}>1</Button>
+					<Button color={createCount == 10 ? "blue" : "gray"} onClick={() => setCreateCount(10)}>10</Button>
 					<Button color={createCount == 100 ? "blue" : "gray"} onClick={() => setCreateCount(100)}>100</Button>
 					<Button color={createCount == 250 ? "blue" : "gray"} onClick={() => setCreateCount(250)}>250</Button>
 					<Button color={createCount == 500 ? "blue" : "gray"} onClick={() => setCreateCount(500)}>500</Button>
